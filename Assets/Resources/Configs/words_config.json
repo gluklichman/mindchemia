@@ -1,0 +1,37 @@
+{
+	"good_words" : [
+		{ "id" : "a", "text" : "ololo_1" },
+		{ "id" : "b", "text" : "ololo_2" },
+		{ "id" : "c", "text" : "ololo_3" },
+		{ "id" : "d", "text" : "ololo_4" },
+		
+		{ "id" : "l1_1", "text" : "piupiu_1" },
+		{ "id" : "l1_2", "text" : "piupiu_2" },
+		{ "id" : "l1_3", "text" : "piupiu_3" },
+		
+		{ "id" : "l2_1", "text" : "text_1" },
+		{ "id" : "l2_2", "text" : "text_2" },
+		{ "id" : "l2_3", "text" : "text_3" }
+	],
+	"bad_words" : [
+		{ "id" : "bad_1", "text" : "bad_1"},
+		{ "id" : "bad_2", "text" : "bad_2" },
+		{ "id" : "bad_3", "text" : "bad_3" },
+		{ "id" : "bad_4", "text" : "bad_4" },
+		{ "id" : "bad_5", "text" : "bad_5" }
+	],
+	"match_rules" : [
+		{ "id1" : "a", "id2" : "b", "result" : "l1_1" },
+		{ "id1" : "c", "id2" : "d", "result" : "l1_2" },
+		{ "id1" : "a", "id2" : "c", "result" : "l1_3" },
+		
+		{ "id1" : "l1_1", "id2" : "l1_2", "result" : "l2_3" }
+	],
+	"annihilation_rules" : [
+		{ "good" : "l1_1", "bad" : "bad_1" },
+		{ "good" : "a", "bad" : "bad_2" },
+		{ "good" : "l2_3", "bad" : "bad_3" },
+		{ "good" : "l1_2", "bad" : "bad_4" },
+		{ "good" : "l1_3", "bad" : "bad_5" }
+	]
+}

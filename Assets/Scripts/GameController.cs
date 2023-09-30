@@ -1,21 +1,22 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Assets.Scripts
 {
     public class GameController : MonoBehaviour
     {
+        [SerializeField]
+        private string[] _initialGoodWords;
+
+        private Data.Data _data;
 
         // Use this for initialization
         void Start()
         {
-            WordConfig config = new WordConfig();
+            _data = new Data.Data();
+
+            GoodWordsSpawner spawner = new GoodWordsSpawner();
+            spawner.SpawnWords(_initialGoodWords);
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
     }
 }

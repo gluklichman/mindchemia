@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Moving;
+﻿using Assets.Scripts.Logic;
+using Assets.Scripts.Moving;
 using UnityEngine;
 
 namespace Assets.Scripts
@@ -23,16 +24,12 @@ namespace Assets.Scripts
 
         private void SpawnSingleWord(string wordId)
         {
-            WordConfig.WordData wordData = Data.Data.Configs.WordConfig.GetGoodWord(wordId);
-
             GameObject wordObj = Object.Instantiate(_goodWordPrefab);
             Vector2 position = Random.insideUnitCircle * _spawnRadius;
             wordObj.transform.position = new Vector3(position.x, position.y, wordObj.transform.position.z);
 
+            wordObj.GetComponent<GoodWord>().Setup(wordId);
             wordObj.GetComponent<GoodWordMover>().Setup(Random.insideUnitCircle);
-
-            TMPro.TMP_Text text = wordObj.GetComponentInChildren<TMPro.TMP_Text>();
-            text.text = wordData.text;
         }
     }
 }

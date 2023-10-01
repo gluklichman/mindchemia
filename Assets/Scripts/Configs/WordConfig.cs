@@ -53,4 +53,30 @@ public class WordConfig
     {
         return Array.Find(_data.bad_words, word => word.id == id);
     }
+
+    public WordData TryPerformMatch(string id1, string id2)
+    {
+        MatchRuleData matchRule = GetMatchRuleForWords(id1, id2);
+        if (matchRule != null)
+        {
+            return GetGoodWord(matchRule.result);   
+        }
+        return null;
+    }
+
+    private MatchRuleData GetMatchRuleForWords(string w1, string w2)
+    {
+        foreach (MatchRuleData rule in _data.match_rules)
+        {
+            if (rule.id1 == w1 && rule.id2 == w2)
+            {
+                return rule;
+            }
+            if (rule.id2 == w1 && rule.id1 == w2)
+            {
+                return rule;
+            }
+        }
+        return null;
+    }
 }
